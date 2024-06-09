@@ -3,8 +3,8 @@ from email.message import EmailMessage
 
 def send_email_alert(subject, message):
     # Replace with your email settings
-    sender_email = "roddaguddu@gmail.com"
-    receiver_email = "roddasangeethaguddu@gmail.com"
+    sender_email = "senders_mail.com"
+    receiver_email = "receivers_mail.com"
     password = "uysc hqsg zhmf tnf"
 
     try:
