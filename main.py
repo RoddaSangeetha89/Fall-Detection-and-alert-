@@ -6,8 +6,6 @@ from send_alert import send_email_alert
 def main(data):
     if detect_fall(data):
         print("Fall detected!")
-        send_email_alert()
-        send_sms_alert()
     else:
         print("No fall detected.")
 
