@@ -1,23 +1,22 @@
-import smtplib
-from email.message import EmailMessage
+from twilio.rest import Client
 
-def send_email_alert(subject, message):
-    # Replace with your email settings
-    sender_email = "senders_mail.com"
-    receiver_email = "receivers_mail.com"
-    password = "uysc hqsg zhmf tnf"
+# Your Twilio account SID and auth token
+account_sid = 'twilo_account_sid'
+auth_token = 'twilo_token'
 
-    try:
-        server = smtplib.SMTP('smtp.example.com', 587)
-        server.starttls()
-        server.login(sender_email, password)
-        msg = f"Subject: {subject}\n\n{message}"
-        server.sendmail(sender_email, receiver_email, msg)
-        server.quit()
-        print("Email sent successfully")
-    except Exception as e:
-        print(f"Error sending email: {e}")
-          # Replace with your fall detection logic
-    subject = "Fall Detected"
-    message = "A fall has been detected. Please check the system."
-    send_alert_email(subject, message)
+def send_sms_alert(message):
+    client = Client(account_sid, auth_token)
+
+    message = client.messages.create(
+        body=message,
+        from_='twilo_number',
+        to='receiver_number'
+    )
+
+    print(f"SMS sent successfully. SID: {message.sid}")
+
+# Example usage:
+message = "Fall detected! Please check immediately."
+send_sms_alert(message)
+
+
